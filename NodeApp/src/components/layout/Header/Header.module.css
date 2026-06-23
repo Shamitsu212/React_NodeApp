@@ -1,0 +1,22 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    gap: 110px;
+
+    width: 100%;
+
+    padding: 10px;
+
+    border-bottom: 1px solid #E7E7E7;
+}
+.header_Logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 36px;
+
+}

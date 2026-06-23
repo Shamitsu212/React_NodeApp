@@ -1,0 +1,27 @@
+.search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #E7E7E7;
+    padding: 10px;
+
+    border-radius: 15px;
+}
+.search__input{
+    width: 370px;
+    height: 40px;
+
+    padding: 10px;
+
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: 22px;
+
+    border: none;
+    background-color: #E7E7E7;
+    outline: none;
+
+    
+}

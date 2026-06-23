@@ -1,0 +1,25 @@
+.aside_notes{
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+
+    border-right: 1px solid #E7E7E7;
+
+    height: 100%;
+}
+.notes_list{
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    background-color: #FCFCFC;
+
+    border-radius: 15px;
+    border: 1px solid #E7E7E7;
+    
+    padding: 8px;
+
+    overflow: hidden;
+}

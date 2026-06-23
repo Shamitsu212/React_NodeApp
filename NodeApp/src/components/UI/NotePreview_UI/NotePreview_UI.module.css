@@ -1,0 +1,26 @@
+.article{
+    display: flex;
+    flex-direction: column;
+
+    width: 420px;
+
+    padding: 5px;
+
+    background-color: white;
+    border-radius: 10px;
+}
+
+.article_h{
+    font-size: 20px;
+    font-family: var(--font-main);
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+.p{
+    font-size: 18px;
+    width: 410px;
+
+    font-family: var(--font-main);
+    font-weight: 400;
+}

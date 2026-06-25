@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface Note{
+export interface Note{
 
     id: number,
     project_id: number,
@@ -35,8 +35,45 @@ const NotesSlice = createSlice({
             state.notes.push(action.payload)
         },
 
-        pinNote(){},
-        removeNotes(){},
+        pinNote(state, action:PayloadAction<number>){
+            const find = state.notes.find((n) => n.id == action.payload)
+
+            if(find){
+                find.Pinned = true
+            }
+
+        },
+
+        favoriteNote(state, action:PayloadAction<number>){
+            const find = state.notes.find((n) => n.id == action.payload)
+
+            if(find){
+                find.Favorite = true
+            }
+
+        },
+
+        unPinNote(state, action:PayloadAction<number>){
+            const find = state.notes.find((n) => n.id == action.payload)
+
+            if(find){
+                find.Pinned = false
+            }
+
+        },
+
+        unFavoriteNote(state, action:PayloadAction<number>){
+            const find = state.notes.find((n) => n.id == action.payload)
+
+            if(find){
+                find.Favorite = false
+            }
+
+        },
+
+        removeNotes(state, action:PayloadAction<number>){
+            state.notes = state.notes.filter((n) => n.id != action.payload)
+        },
 
 
         editNote(state, action: PayloadAction<Note>) {
@@ -51,5 +88,5 @@ const NotesSlice = createSlice({
 
 })
 
-export const { setNotes, addNote, removeNotes, editNote,  } = NotesSlice.actions
+export const { setNotes, addNote, removeNotes, editNote, pinNote, favoriteNote, unPinNote, unFavoriteNote } = NotesSlice.actions
 export default NotesSlice.reducer

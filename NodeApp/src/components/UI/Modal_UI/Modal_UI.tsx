@@ -1,61 +1,65 @@
+import styles from './Modal_UI.module.css'
+
 import Button_UI from '../Button_UI/Button_UI'
 import Input_UI from '../Input_UI/Input_UI'
 
-import React, { useState, type SetStateAction } from 'react'
+import { useState, type Dispatch,type SetStateAction} from 'react'
 
-import styles from './Modal_UI.module.css'
-import { useDispatch } from 'react-redux'
-import { addProjects } from '../../../store/slices/FoldersSlice'
+import { useCreateFolder } from '../../../utils/useCreateFolder'
 
 interface Props {
-  visible: string,
-  setVisible: React.Dispatch<SetStateAction<string>>
+
+  visible: string
+  setVisible: Dispatch<SetStateAction<string>>
+
 }
 
-interface Folder {
-  id: number,
-  name: string
-}
+function Modal_UI({visible, setVisible,}: Props) {
+  const [folder, setFolder] = useState('')
 
-function Modal_UI({visible, setVisible}:Props) {
+  const createFolder = useCreateFolder()
 
+  function pushFolder(result: string) {
 
-  const [folder, setFolder] = useState<string>("")
+    const folderName = folder.trim()
 
-  let newFolder:Folder = {id: Date.now(), name: folder}
+    if (!folderName) return
 
-  const dispatch = useDispatch()
-
-  function PushFolder(string:string){
-
-    if(newFolder.name.length < 1){
-      throw new Error("Не введено название")
-    }
-
-    dispatch(addProjects(newFolder))
-
-
-    setVisible(string)
+    createFolder(folderName)
+    setFolder('')
+    setVisible(result)
   }
 
-
   return (
-    <div className={visible == "n" ? styles.modal_notVisible : styles.modal_visible} onClick={() => setVisible("n")} onSubmit={(e) => {e.preventDefault()}}>
 
-      <form className={styles.modal_form} onClick={(e) => e.stopPropagation()}>
+    <div className={ visible === 'n' ? styles.modal_notVisible : styles.modal_visible} onClick={() => setVisible('n')}>
+
+      <form
+        className={styles.modal_form}
+        onClick={(e) => e.stopPropagation()}
+        onSubmit={(e) => e.preventDefault()}
+      >
 
         <h1 className={styles.form_h}>
           Создать папку
         </h1>
 
-        <Input_UI  string={folder} setString={setFolder} placeholder='Введите название папки'/>
+        <Input_UI
+          string={folder}
+          setString={setFolder}
+          placeholder='Введите название папки'
+        />
 
-        <Button_UI text='Создать' OnClick={PushFolder} result='n'/>
+        <Button_UI
+          text='Создать'
+          OnClick={pushFolder}
+          result='n'
+        />
 
       </form>
 
     </div>
-    
+
   )
 }
 

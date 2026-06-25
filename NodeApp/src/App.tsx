@@ -1,16 +1,11 @@
-import { Route, Routes } from 'react-router-dom'
-import { routes } from './routes/routes'
+import Main_Page from './components/pages/Main_Page/Main_Page'
 
 function App() {
 
   return (
-    <Routes>
-      
-      {routes.map((r) => (
-        <Route key={r.path} path={r.path} element={<r.Component/>} />
-      ))}
-
-    </Routes>
+    <div>
+      <Main_Page/>
+    </div>
   )
 }
 

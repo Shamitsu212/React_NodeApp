@@ -1,20 +1,18 @@
-import { NotebookIcon } from 'lucide-react'
 import styles from './Header.module.css'
+
+import { NotebookIcon } from 'lucide-react'
+
 import Search_UI from '../../UI/Search_UI/Search_UI'
-import { useContext } from 'react'
+
+import { useRequiredContext } from '../../../utils/useRequiredContext'
 import { SearchContext } from '../../../context/SearchContext'
 
 function Header() {
-
-    const context = useContext(SearchContext)
-
-    if(!context){
-        throw new Error("Ошибка в контексте SearchContext")
-    }
-
-    const { search, setSearch } = context;
+  
+  const { search, setSearch } = useRequiredContext(SearchContext, 'SearchContext')
 
   return (
+
     <header className={styles.header}>
       
       <div className={styles.header_Logo}>
@@ -27,9 +25,9 @@ function Header() {
       
       <Search_UI string={search} setString={setSearch}/>
 
-
     </header>
   )
+
 }
 
 export default Header

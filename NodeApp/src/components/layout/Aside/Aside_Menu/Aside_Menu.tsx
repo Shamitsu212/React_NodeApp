@@ -1,23 +1,22 @@
 import styles from './Aside_Menu.module.css'
-import { useSelector } from 'react-redux'
 
-import type { RootState } from '../../../../store/store'
+import { useState } from 'react'
+
 import Button_UI from '../../../UI/Button_UI/Button_UI'
-import { FolderIcon, NotebookPenIcon, StarIcon } from 'lucide-react'
-import { useContext, useState } from 'react'
-import { SelectedFolderContext } from '../../../../context/SelectedFolderContext'
 import Modal_UI from '../../../UI/Modal_UI/Modal_UI'
+import { FolderIcon, NotebookPenIcon, StarIcon } from 'lucide-react'
+
+import { useSelector } from 'react-redux'
+import type { RootState } from '../../../../store/store'
+
+import { SelectedFolderContext } from '../../../../context/SelectedFolderContext'
+import { useRequiredContext } from '../../../../utils/useRequiredContext'
 
 function Aside_Projects() {
 
   const folders = useSelector((state: RootState) => state.folders)
 
-
-  const context = useContext(SelectedFolderContext)
-  if(!context){
-    throw new Error("Ошибка в контексте SelectedContext")
-  }
-  const {setSelected} = context
+  const { setSelected } = useRequiredContext(SelectedFolderContext, 'SelectedFolderContext')
 
   const [visible, setVisible] = useState("n")
 
@@ -48,10 +47,12 @@ function Aside_Projects() {
         </h3>
 
         {folders.folders.map((f) => (
+
           <div className={styles.folders_folder}>
             <FolderIcon size={30}/>
             <Button_UI text={f.name} result={`${f.id}`} OnClick={setSelected}/>
           </div>
+          
         ))}
 
       </div>

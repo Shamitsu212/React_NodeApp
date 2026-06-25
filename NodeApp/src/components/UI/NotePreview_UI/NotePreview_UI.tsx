@@ -54,11 +54,11 @@ function NotePreview_UI({id}:Props) {
 
         {note?.Pinned ? 
           <button className={styles.buttonContainer_button} onClick={(e) => {e.stopPropagation(), unPin(note.id)}}>
-            <PinOffIcon size={22} color='black'/>
+            <PinOffIcon size={22}/>
           </button>
         : 
           <button className={styles.buttonContainer_button} onClick={(e) => {e.stopPropagation(), pin(note.id)}}>
-            <PinIcon size={22} color='black'/>
+            <PinIcon size={22}/>
           </button>
         }
 
@@ -68,12 +68,12 @@ function NotePreview_UI({id}:Props) {
           </button>
         : 
           <button className={styles.buttonContainer_button} onClick={(e) => { e.stopPropagation(), favorite(note.id)}}>
-            <StarIcon size={22} color='black'/>
+            <StarIcon size={22}/>
           </button>
         }
 
         <button className={styles.buttonContainer_button} onClick={() => del(note.id)}>
-          <TrashIcon size={22} color='black'/>
+          <TrashIcon size={22}/>
         </button>
 
       </div>

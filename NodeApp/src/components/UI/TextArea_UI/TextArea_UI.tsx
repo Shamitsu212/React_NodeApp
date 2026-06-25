@@ -2,6 +2,7 @@ import styles from './TextArea_UI.module.css'
 
 import type { SetStateAction } from 'react'
 
+
 interface Props {
     
   string: string,
@@ -16,7 +17,7 @@ function TextArea_UI({string, setString, placeholder}:Props) {
 
   return (
     <textarea
-        className={styles.input} 
+        className={`${styles.input}`} 
         value={string} 
         placeholder={placeholder} 
         onChange={(e) => setString(e.target.value)}    

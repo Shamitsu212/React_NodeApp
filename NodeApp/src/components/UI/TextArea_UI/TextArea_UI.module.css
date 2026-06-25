@@ -13,4 +13,8 @@
     font-size: 20px;
     font-family: var(--font-main);
     font-weight: 500;
+
+    background-color: var(--bg);
+    color: var(--text);
 }
+

@@ -14,11 +14,13 @@ interface Props {
 
 function Search_UI({string, setString}:Props) {
 
+  
+
   return (
 
     <div className={styles.search}>
 
-        <SearchIcon size={30}/>
+        <SearchIcon size={30} className={styles.icon}/>
 
         <input 
             className={styles.search__input} 

@@ -44,7 +44,7 @@ function Aside_Notes() {
 
         <div>
 
-          <h2>Закрепленные</h2>
+          <h2 className={styles.aside_h}>Закрепленные</h2>
 
           <div className={styles.notes_list}>
             {pinnedNotes.map((n) => (
@@ -63,7 +63,7 @@ function Aside_Notes() {
 
         <div>
 
-          <h2>{title}</h2>
+          <h2 className={styles.aside_h}>{title}</h2>
 
           <div className={styles.notes_list}>
             {filteredNotes.map((n) => (
@@ -78,7 +78,7 @@ function Aside_Notes() {
 
       )}
 
-      <div>
+      <div className={`${selected == "favorite" ? styles.none : styles.aside_addButton}`}>
         <PlusCircleIcon />
         <Button_UI
           text='Добавить новую запись'

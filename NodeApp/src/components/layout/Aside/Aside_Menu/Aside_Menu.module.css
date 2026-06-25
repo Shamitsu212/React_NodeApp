@@ -5,9 +5,10 @@
 
     padding: 10px;
 
-    border-right: 1px solid #E7E7E7 ;
+    border-right: 1px solid var(--border) ;
 
-    background-color: #FCFCFC;
+    background-color: var(--bgSecond);
+    color: var(--text);
 
     width: 250px;
     height: 100%;

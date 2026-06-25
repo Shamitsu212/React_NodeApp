@@ -1,26 +1,37 @@
-import { createContext, useState, type ReactNode, type SetStateAction } from "react";
+import {createContext, useState, useEffect, type ReactNode, type SetStateAction,} from "react";
 
 import type React from "react";
 
 interface ContextProps {
-    theme: string,
-    setTheme: React.Dispatch<SetStateAction<string>>
+
+  theme: string;
+  setTheme: React.Dispatch<SetStateAction<string>>;
+
 }
 
-export const ThemeContext = createContext<ContextProps | null>(null)
+export const ThemeContext = createContext<ContextProps | null>(null);
 
 interface ProviderProps {
-    children: ReactNode
+
+  children: ReactNode;
+
 }
 
-export function ThemeProvider({children}:ProviderProps){
+export function ThemeProvider({ children }: ProviderProps) {
 
-    const [theme, setTheme] = useState<string>("light")
+  const [theme, setTheme] = useState<string>("light");
 
-    return(
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme",theme);
+  }, [theme]);
 
-        <ThemeContext.Provider value={{theme, setTheme}}>
-            {children}
-        </ThemeContext.Provider>
-    )
-} 
+  return (
+
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+
+      {children}
+
+    </ThemeContext.Provider>
+
+  );
+}
